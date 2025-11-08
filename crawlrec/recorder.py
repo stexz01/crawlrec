@@ -75,10 +75,6 @@ class Recorder:
         if pending:
             for t in pending:
                 t.cancel()
-            try:
-                await asyncio.gather(*pending, return_exceptions=True)
-            except Exception:
-                pass
 
         os._exit(0)
 
