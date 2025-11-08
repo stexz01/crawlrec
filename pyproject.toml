@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crawlrec"
+version = "1.0.0"
+description = "Humanized Playwright Recorder & Extractor for web crawling automation."
+authors = [{ name = "Abrar Hussain" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "playwright>=1.48.0",
+    "InquirerPy>=0.3.4"
+]
+
+[project.urls]
+Homepage = "https://github.com/stexz01/crawlrec"
+Issues = "https://github.com/stexz01/crawlrec/issues"
+
+[project.scripts]
+crawlrec = "crawlrec.cli:main"
