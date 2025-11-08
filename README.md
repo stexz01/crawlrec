@@ -18,7 +18,7 @@ It includes stealth behavior, randomized user agents, and graceful shutdown hand
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/stexz01/crawlrec.git && cd crawlrec && pip install -r requirements.txt && playwright install
+git clone https://github.com/stexz01/crawlrec.git && cd crawlrec && pip install -e . && playwright install
 ```
 
 CrawlRec requires:
@@ -32,7 +32,7 @@ CrawlRec requires:
 Interactively record selectors from any website.
 
 ```bash
-python3 crawlrec.py record https://example.com -o example.json
+crawlrec record https://example.com -o example.json
 ```
 
 During recording:
@@ -47,13 +47,13 @@ During recording:
 Run a saved JSON template to extract data from a page.
 
 ```bash
-python3 crawlrec.py extract -t crawls/example.json
+crawlrec extract -t crawls/example.json
 ```
 
 You can override the URL if needed:
 
 ```bash
-python3 crawlrec.py extract -t crawls/template.json -u https://newpage.com
+crawlrec extract -t crawls/template.json -u https://newpage.com
 ```
 
 ---
