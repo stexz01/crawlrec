@@ -21,7 +21,6 @@ class Extractor:
 
         async with async_playwright() as p:
             ctx = await p.chromium.launch_persistent_context(
-                user_data_dir="/tmp/crawlrec_extract",
                 headless=self.headless,                     # headful for more human
                 slow_mo=random.randint(10,200),
                 user_agent=random_chrome_ua(),

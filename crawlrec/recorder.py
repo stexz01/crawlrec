@@ -197,7 +197,6 @@ class Recorder:
         try:
             async with async_playwright() as p:
                 ctx = await p.chromium.launch_persistent_context(
-                    user_data_dir="/tmp/crawlrec_extract",
                     headless=False,                     
                     slow_mo=random.randint(10,200),
                     user_agent=random_chrome_ua(),
