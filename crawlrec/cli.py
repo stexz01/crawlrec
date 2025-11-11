@@ -46,6 +46,13 @@ def main():
     elif args.cmd == "extract":
         ext = Extractor(args.url, args.file, args.headful)
         try:
-            asyncio.run(ext.run())
+            results_ = asyncio.run(ext.run())
+            if not results_:
+                print("[]")
+                return 
+            else:
+                for result in results_:
+                    print(result)
+                    
         except (KeyboardInterrupt, TypeError, ValueError) as e:
             parser.print_help()

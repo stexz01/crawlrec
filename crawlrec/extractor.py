@@ -7,6 +7,7 @@ class Extractor:
         self.url = url
         self.headless = not headful
         self._error = False
+        self._collected = []
         
     async def run(self):
         if not os.path.exists(self.file):
@@ -23,7 +24,7 @@ class Extractor:
         page = ctx.pages[0] if ctx.pages else await ctx.new_page()
         
         await page.route("**/*", lambda route, req: 
-    route.abort() if req.resource_type in ["image","media","font"] else route.continue_())
+        route.abort() if req.resource_type in ["image","media","font"] else route.continue_())
 
         try:
             # await page.goto(self.url, wait_until="networkidle") # stucks in never ending network api/ads calls....
@@ -40,13 +41,13 @@ class Extractor:
         if self._error:
             await ctx.close(), await browser.close()
             return
-
+        
         for a in acts:
             try:
                 el = await page.query_selector(a["selector"]) or \
                         await page.query_selector(f"xpath={a['xpathSelector']}")
                 if not el:
-                    print("❌ not found")
+                    self._collected.append(None)
                     continue
                 if a["extractType"] == "text":
                     val = await el.inner_text()
@@ -56,7 +57,8 @@ class Extractor:
                     val = await el.input_value()
                 else:
                     val = await el.inner_text()
-                print(val)
+                self._collected.append(val)
             except Exception as e:
                 log(f"Extraction Error: {e}")
         await ctx.close(), await browser.close()
+        return self._collected
