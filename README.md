@@ -3,7 +3,11 @@
 CrawlRec is a **humanized Playwright-based recorder and extractor** that allows you to record element selectors interactively and later re-run automated extractions.  
 It includes stealth behavior, randomized user agents, and graceful shutdown handling to avoid detection and prevent stuck sessions.
 
-<img width="1200" height="1000" alt="crawlrec_banner" src="https://github.com/user-attachments/assets/e25e834b-a524-4542-9d7a-b12e95317486" />
+<img src="https://github.com/user-attachments/assets/e25e834b-a524-4542-9d7a-b12e95317486" width="1000" />
+
+<p align="center">
+  <img src="demos/crawlrec.gif" width="1000" />
+</p>
 
 ---
 
